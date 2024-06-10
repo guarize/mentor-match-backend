@@ -1,6 +1,6 @@
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -12,7 +12,7 @@ model User {
   email     String   @unique
   password  String
   name      String
-  role      String   // "STUDENT" ou "MENTOR"
+  role      String
   profile   Profile?
 
   createdAt DateTime @default(now())
@@ -35,7 +35,7 @@ model Match {
   id          Int      @id @default(autoincrement())
   userId1     Int
   userId2     Int
-  status      String   // "PENDING", "ACCEPTED" ou "REJECTED"
+  status      String
 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
