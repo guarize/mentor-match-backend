@@ -14,31 +14,24 @@ model User {
   name      String
   role      String
   profile   Profile?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  matchesAsUser1 Match[] @relation("User1Matches")
+  matchesAsUser2 Match[] @relation("User2Matches")
 }
 
 model Profile {
-  id          Int      @id @default(autoincrement())
-  bio         String?
-  interests   String?
-  experience  String?
-  userId      Int      @unique
-  user        User     @relation(fields: [userId], references: [id])
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id         Int     @id @default(autoincrement())
+  bio        String?
+  interests  String[]
+  experience String?
+  userId     Int     @unique
+  user       User    @relation(fields: [userId], references: [id])
 }
 
 model Match {
-  id          Int      @id @default(autoincrement())
-  userId1     Int
-  userId2     Int
-  status      String
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@unique([userId1, userId2])
+  id      Int    @id @default(autoincrement())
+  userId1 Int
+  userId2 Int
+  status  String
+  user1   User   @relation("User1Matches", fields: [userId1], references: [id])
+  user2   User   @relation("User2Matches", fields: [userId2], references: [id])
 }
