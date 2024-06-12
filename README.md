@@ -54,7 +54,7 @@ No diretório do projeto, execute:
 npm install
 ```
 
-2. **Instalar as Dependências**
+2. **Popule os dados**
 
 Rode o script de semente:
 
