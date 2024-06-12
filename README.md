@@ -54,7 +54,15 @@ No diretório do projeto, execute:
 npm install
 ```
 
-2. **Iniciar o Servidor**
+2. **Instalar as Dependências**
+
+Rode o script de semente:
+
+```bash
+npm run seed
+```
+
+3. **Iniciar o Servidor**
 
 Inicie o servidor com o comando:
 
