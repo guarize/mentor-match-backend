@@ -2,24 +2,29 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
+  await prisma.match.deleteMany({});
+  await prisma.profile.deleteMany({});
+  await prisma.user.deleteMany({});
+  
   const users = [
+    // Mentores
     {
-      email: 'ana.silva@example.com',
+      email: 'mentor1@example.com',
       password: 'hashedpassword',
-      name: 'Ana Silva',
+      name: 'Mentor 1',
       role: 'MENTOR',
       profile: {
         create: {
-          bio: 'Desenvolvedora web com paixão por ensinar.',
+          bio: 'Desenvolvedor web com paixão por ensinar.',
           interests: 'Desenvolvimento Web, Ensino',
           experience: '5 anos',
         },
       },
     },
     {
-      email: 'joao.souza@example.com',
+      email: 'mentor2@example.com',
       password: 'hashedpassword',
-      name: 'João Souza',
+      name: 'Mentor 2',
       role: 'MENTOR',
       profile: {
         create: {
@@ -30,22 +35,22 @@ async function main() {
       },
     },
     {
-      email: 'maria.oliveira@example.com',
+      email: 'mentor3@example.com',
       password: 'hashedpassword',
-      name: 'Maria Oliveira',
+      name: 'Mentor 3',
       role: 'MENTOR',
       profile: {
         create: {
-          bio: 'Engenheira de software com expertise em desenvolvimento backend.',
+          bio: 'Engenheiro de software com expertise em desenvolvimento backend.',
           interests: 'Desenvolvimento Backend, APIs',
           experience: '4 anos',
         },
       },
     },
     {
-      email: 'pedro.martins@example.com',
+      email: 'mentor4@example.com',
       password: 'hashedpassword',
-      name: 'Pedro Martins',
+      name: 'Mentor 4',
       role: 'MENTOR',
       profile: {
         create: {
@@ -56,9 +61,9 @@ async function main() {
       },
     },
     {
-      email: 'juliana.alves@example.com',
+      email: 'mentor5@example.com',
       password: 'hashedpassword',
-      name: 'Juliana Alves',
+      name: 'Mentor 5',
       role: 'MENTOR',
       profile: {
         create: {
@@ -69,9 +74,9 @@ async function main() {
       },
     },
     {
-      email: 'carlos.lima@example.com',
+      email: 'mentor6@example.com',
       password: 'hashedpassword',
-      name: 'Carlos Lima',
+      name: 'Mentor 6',
       role: 'MENTOR',
       profile: {
         create: {
@@ -82,9 +87,9 @@ async function main() {
       },
     },
     {
-      email: 'fernanda.santos@example.com',
+      email: 'mentor7@example.com',
       password: 'hashedpassword',
-      name: 'Fernanda Santos',
+      name: 'Mentor 7',
       role: 'MENTOR',
       profile: {
         create: {
@@ -95,9 +100,9 @@ async function main() {
       },
     },
     {
-      email: 'ricardo.pereira@example.com',
+      email: 'mentor8@example.com',
       password: 'hashedpassword',
-      name: 'Ricardo Pereira',
+      name: 'Mentor 8',
       role: 'MENTOR',
       profile: {
         create: {
@@ -108,9 +113,9 @@ async function main() {
       },
     },
     {
-      email: 'elaine.costa@example.com',
+      email: 'mentor9@example.com',
       password: 'hashedpassword',
-      name: 'Elaine Costa',
+      name: 'Mentor 9',
       role: 'MENTOR',
       profile: {
         create: {
@@ -121,15 +126,146 @@ async function main() {
       },
     },
     {
-      email: 'marcos.ribeiro@example.com',
+      email: 'mentor10@example.com',
       password: 'hashedpassword',
-      name: 'Marcos Ribeiro',
+      name: 'Mentor 10',
       role: 'MENTOR',
       profile: {
         create: {
           bio: 'Engenheiro de dados com experiência em big data.',
           interests: 'Engenharia de Dados, Big Data',
           experience: '6 anos',
+        },
+      },
+    },
+    // Alunos
+    {
+      email: 'aluno1@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 1',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de desenvolvimento web.',
+          interests: 'Desenvolvimento Web, Programação',
+          experience: '1 ano',
+        },
+      },
+    },
+    {
+      email: 'aluno2@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 2',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de ciência de dados.',
+          interests: 'Ciência de Dados, Estatística',
+          experience: '1 ano',
+        },
+      },
+    },
+    {
+      email: 'aluno3@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 3',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de engenharia de software.',
+          interests: 'Engenharia de Software, Desenvolvimento Backend',
+          experience: '1 ano',
+        },
+      },
+    },
+    {
+      email: 'aluno4@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 4',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de front-end.',
+          interests: 'Desenvolvimento Frontend, React',
+          experience: '1 ano',
+        },
+      },
+    },
+    {
+      email: 'aluno5@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 5',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de UX/UI.',
+          interests: 'UX/UI, Design',
+          experience: '1 ano',
+        },
+      },
+    },
+    {
+      email: 'aluno6@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 6',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de arquitetura de soluções.',
+          interests: 'Arquitetura de Soluções, Nuvem',
+          experience: '1 ano',
+        },
+      },
+    },
+    {
+      email: 'aluno7@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 7',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de segurança da informação.',
+          interests: 'Segurança da Informação, Cibersegurança',
+          experience: '1 ano',
+        },
+      },
+    },
+    {
+      email: 'aluno8@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 8',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de banco de dados.',
+          interests: 'Banco de Dados, SQL',
+          experience: '1 ano',
+        },
+      },
+    },
+    {
+      email: 'aluno9@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 9',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de inteligência artificial.',
+          interests: 'Inteligência Artificial, Machine Learning',
+          experience: '1 ano',
+        },
+      },
+    },
+    {
+      email: 'aluno10@example.com',
+      password: 'hashedpassword',
+      name: 'Aluno 10',
+      role: 'STUDENT',
+      profile: {
+        create: {
+          bio: 'Estudante de engenharia de dados.',
+          interests: 'Engenharia de Dados, Big Data',
+          experience: '1 ano',
         },
       },
     },
